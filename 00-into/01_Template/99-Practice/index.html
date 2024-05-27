@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- <script src="./data.js"></script> -->
+    <!-- <script src="./test.css"></script> -->
+    <title>Document</title>
+    <!--
+    규칙이 뭐냐
+    header에 문구
+    1. 박스 하나마다 이름, 소개, 이미지
+    2. 이름과 이미지는 가운데 정렬
+    -->
+</head>
+
+
+<body>
+    <div id="app">
+        <header>
+            <h1>
+                <p>vue template 익숙해지기</p>
+            </h1>
+        </header>
+    </div>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            setup() {
+                const jsonData = scholar({
+
+                })
+
+                return {
+                    jsonData
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
