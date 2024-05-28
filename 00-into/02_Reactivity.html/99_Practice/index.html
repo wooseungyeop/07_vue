@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="data.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    .character {
+        border: 2px solid black;
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+    }
+
+
+    .imgContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .imgContainer img {
+
+        width: 50%;
+        height: 50%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+
+
+
+
+    .character {
+        border: 2px solid black;
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+    }
+
+
+    .imgContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .imgContainer img {
+
+        width: 25%;
+        height: 25%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <header>
+            <h1> vue template 이벤트 응용</h1>
+            <div>
+                <button @click="onceMethod">
+                    버튼
+                </button>
+            </div>
+            <div v-if="charactershow" class="container">
+                <div v-for="item in character" :key="item.id" class="character">
+                    <h5>이름 : {{item.name}}</h5>
+                    <p>{{item.introduction}}</p>
+                    <div class="imgContainer">
+                        <img :src=item.img />
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div v-else="skillshow" class="container">
+                <div v-for="item in skill" :key="item.id" class="skill">
+                    <h5>이름 : {{item.skill}}</h5>
+                    <p>소개 : {{item.introduction}}</p>
+
+                    <div class="imgContainer">
+                        <img :src=item.imgs />
+                    </div>
+                </div>
+            </div>
+
+
+
+        </header>
+
+    </div>
+    <!-- {{skill}} -->
+    <script>
+        const { createApp, ref, reactive } = Vue
+
+
+        createApp({
+            setup() {
+                const character = reactive(scholar);
+                const skill = reactive(msaSkill);
+                const charactershow = ref(true);
+
+                function onceMethod(){
+                    charactershow.value = !charactershow.value;     
+                }
+                return {
+                    character,
+                    skill,
+                    charactershow
+                    
+                }
+            }
+        }).mount("#app");
+
+
+    </script>
+</body>
+
+</html>
